@@ -1,10 +1,9 @@
-from flask import Flask, render_template, request, redirect, send_from_directory, flash, url_for
+from flask import Flask, render_template, request, redirect, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.utils import secure_filename
 import os
 
 app = Flask(__name__)
-app.secret_key = 'secret'  # Needed for flash messages
 
 # Config
 UPLOAD_FOLDER = 'uploads'
@@ -25,8 +24,8 @@ class Note(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100))
     subject = db.Column(db.String(100))
+    category = db.Column(db.String(100))  # New category field
     filename = db.Column(db.String(100))
-    category = db.Column(db.String(50))  # New field
 
 # Create DB tables
 with app.app_context():
@@ -48,7 +47,7 @@ def upload():
     if request.method == 'POST':
         title = request.form['title']
         subject = request.form['subject']
-        category = request.form['category']
+        category = request.form['category']  # Get category from form
         file = request.files['file']
 
         if file and allowed_file(file.filename):
@@ -56,36 +55,36 @@ def upload():
             filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             file.save(filepath)
 
-            new_note = Note(title=title, subject=subject, filename=filename, category=category)
+            # Save to database including the category
+            new_note = Note(title=title, subject=subject, category=category, filename=filename)
             db.session.add(new_note)
             db.session.commit()
 
-            flash('File uploaded successfully!', 'success')
             return redirect('/')
         else:
-            flash('File type not allowed.', 'danger')
-            return redirect('/upload')
+            return "File type not allowed. Only PDF, DOCX, PPT, JPG/PNG allowed.", 400
 
     return render_template('upload.html')
 
-# File download route
+# Download
 @app.route('/uploads/<filename>')
 def download_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
-# Delete file
+# Delete note
 @app.route('/delete/<int:note_id>', methods=['POST'])
 def delete_note(note_id):
-    note = Note.query.get(note_id)
-    if note:
-        filepath = os.path.join(app.config['UPLOAD_FOLDER'], note.filename)
-        if os.path.exists(filepath):
-            os.remove(filepath)
-        db.session.delete(note)
-        db.session.commit()
-        flash('Note deleted successfully.', 'success')
-    else:
-        flash('Note not found.', 'danger')
+    note = Note.query.get_or_404(note_id)
+    file_path = os.path.join(app.config['UPLOAD_FOLDER'], note.filename)
+
+    # Delete the file from the filesystem
+    if os.path.exists(file_path):
+        os.remove(file_path)
+
+    # Delete the record from the database
+    db.session.delete(note)
+    db.session.commit()
+
     return redirect('/')
 
 if __name__ == '__main__':
