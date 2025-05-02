@@ -4,7 +4,7 @@ This is a simple and clean web application built using **Flask** that allows use
 
 ## 📷 Screenshot
 
-![Screenshot of the Notes Web App](screenshot.png)
+![Screenshot of the Notes Web App](static/screenshot.png)
 
 ---
 
