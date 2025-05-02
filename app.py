@@ -24,7 +24,7 @@ class Note(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100))
     subject = db.Column(db.String(100))
-    category = db.Column(db.String(100))  # New category field
+    category = db.Column(db.String(100))  # <-- new field
     filename = db.Column(db.String(100))
 
 # Create DB tables
@@ -47,7 +47,7 @@ def upload():
     if request.method == 'POST':
         title = request.form['title']
         subject = request.form['subject']
-        category = request.form['category']  # Get category from form
+        category = request.form['category']
         file = request.files['file']
 
         if file and allowed_file(file.filename):
@@ -55,7 +55,7 @@ def upload():
             filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             file.save(filepath)
 
-            # Save to database including the category
+            # Save to database
             new_note = Note(title=title, subject=subject, category=category, filename=filename)
             db.session.add(new_note)
             db.session.commit()
@@ -71,17 +71,15 @@ def upload():
 def download_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
-# Delete note
+# Delete
 @app.route('/delete/<int:note_id>', methods=['POST'])
 def delete_note(note_id):
     note = Note.query.get_or_404(note_id)
     file_path = os.path.join(app.config['UPLOAD_FOLDER'], note.filename)
 
-    # Delete the file from the filesystem
     if os.path.exists(file_path):
         os.remove(file_path)
 
-    # Delete the record from the database
     db.session.delete(note)
     db.session.commit()
 
