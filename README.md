@@ -28,5 +28,3 @@ This is a simple and clean web application built using **Flask** that allows use
 
 ---
 
-## 📁 Project Structure
-
