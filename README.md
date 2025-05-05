@@ -1,4 +1,4 @@
-# 📚 Notes Sharing Web App
+# 📚 Web Application 
 
 This is a simple and clean web application built using **Flask** that allows users to upload, view, download, and delete academic notes and study materials. Notes can be categorized by **title**, **subject**, and **category**, and files are stored on the server.
 
