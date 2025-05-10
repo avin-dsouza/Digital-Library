@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login | Digital Library</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-image: url('{{ url_for('static', filename='library.jpg') }}');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .login-card {
+      max-width: 400px;
+      margin: 100px auto;
+      padding: 30px;
+      background-color: rgba(255, 255, 255, 0.92);
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+    .login-card h3 {
+      margin-bottom: 25px;
+      font-weight: bold;
+      color: #6b4f2d;
+    }
+    .btn-custom {
+      background-color: #6b4f2d;
+      color: white;
+    }
+    .btn-custom:hover {
+      background-color: #533e23;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-card">
+    <h3 class="text-center">Login to Digital Library</h3>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    <form method="POST" action="{{ url_for('login') }}">
+      <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input
+          type="text"
+          class="form-control"
+          id="username"
+          name="username"
+          required
+          value="{{ username if username else '' }}"
+        >
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          name="password"
+          required
+        >
+      </div>
+      <button type="submit" class="btn btn-custom w-100">Login</button>
+    </form>
+    <div class="text-center mt-3">
+      <small>Don't have an account? <a href="{{ url_for('register') }}">Register here</a></small>
+    </div>
+  </div>
+</body>
+</html>
