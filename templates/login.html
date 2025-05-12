@@ -38,13 +38,9 @@
 <body>
   <div class="login-card">
     <h3 class="text-center">Login to Digital Library</h3>
-    {% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
-        {% for category, message in messages %}
-          <div class="alert alert-{{ category }}">{{ message }}</div>
-        {% endfor %}
-      {% endif %}
-    {% endwith %}
+    {% if error %}
+      <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
     <form method="POST" action="{{ url_for('login') }}">
       <div class="mb-3">
         <label for="username" class="form-label">Username</label>
