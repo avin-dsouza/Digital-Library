@@ -2,89 +2,97 @@
 
 Your Personal Hub for Study Materials — Upload, Search, Sort, and Manage with Ease!
 
-Welcome to **Digital Library** — a simple and efficient web app designed to help students, educators, and lifelong learners organize and access study materials anytime, anywhere.
+Welcome to **Digital Library**, a sleek and user-friendly web application designed to help students, educators, and lifelong learners organize, access, and manage study materials anytime, anywhere. Whether you're preparing for exams, teaching a course, or simply gathering knowledge, this app makes handling your documents effortless.
 
 ---
 
-## Features
+## 🚀 Features
 
-* 📤 **Upload** study materials in various formats (PDF, DOCX, PPT, etc.)
-* 🔍 **Search** by title, subject, category, or file type
-* 📂 **Sort and filter** to quickly find what you need
-* 📥 **Download** files for offline study
-* 🗑️ **Delete** files you no longer need
-* 🔒 User-friendly, responsive design built with **Flask**, **SQLite**, and **Bootstrap**
+- **Easy Uploads**  
+  Upload your study materials in multiple formats including PDF, DOCX, PPT, and more — all in just a few clicks.
+
+- **Powerful Search & Filter**  
+  Quickly find what you need by searching titles, subjects, categories, or file types. Filter results to narrow down your collection instantly.
+
+- **Sorting Options**  
+  Sort documents alphabetically, by upload date, or by file type to keep your library organized your way.
+
+- **Download & Delete**  
+  Download files for offline access or delete outdated materials to keep your collection fresh.
+
+- **Responsive Design**  
+  Fully responsive UI built with Bootstrap ensures a smooth experience on desktop, tablet, and mobile.
+
+- **Secure & Lightweight**  
+  Built on Flask and SQLite, the app is lightweight yet secure, making it easy to deploy and maintain.
 
 ---
 
-## Tech Stack
+## 🛠️ Technology Stack
 
-* **Backend:** Flask (Python)
-* **Database:** SQLite
-* **Frontend:** Bootstrap CSS framework
-* **Others:** Jinja2 templating, Werkzeug for file handling
+- **Backend:** Flask (Python) — Lightweight and flexible web framework.  
+- **Database:** SQLite — Simple, serverless, self-contained SQL database engine.  
+- **Frontend:** Bootstrap 5 — Modern, mobile-first CSS framework for responsive design.  
+- **Templates:** Jinja2 — Powerful templating engine to generate dynamic HTML pages.  
+- **File Handling:** Werkzeug — For secure file uploads and downloads.
 
 ---
 
-## Getting Started
+## ⚙️ Process of Progress
 
 ### Prerequisites
 
-* Python 3.x installed
-* pip package manager
+- Python 3.6+ installed on your machine  
+- pip package manager
 
-### Installation
+### Steps
 
-1. Clone the repo
+1. **Create a virtual environment (recommended)**
 
    ```bash
-   git clone https://github.com/your-username/digital-library.git
-   cd digital-library
+   python -m venv venv
+   source venv/bin/activate      # On Windows: venv\Scripts\activate
    ```
 
-2. Install dependencies
+2. **Install dependencies**
 
    ```bash
    pip install -r requirements.txt
    ```
 
-3. Run the app
+3. **Run the Flask app**
 
    ```bash
    flask run
    ```
 
-4. Open your browser and go to
+4. **Access the app**
 
-   ```
-   http://127.0.0.1:5000/
-   ```
-
----
-
-## Usage
-
-* Upload your study materials via the upload page
-* Use the search bar and filters to find documents quickly
-* Click to download or delete files as needed
+   Open your browser and go to:
+   `http://127.0.0.1:5000/`
 
 ---
 
-## Contributing
+## 🤝 Contributing
 
-Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/your-username/digital-library/issues).
+I welcome contributions! Whether it’s fixing bugs, adding features, or improving documentation, your help is appreciated.
+
+To contribute:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-name`).
+3. Make your changes and commit (`git commit -m 'Add feature'`).
+4. Push to your branch (`git push origin feature-name`).
+5. Open a Pull Request describing your changes.
+
+Check the [issues page](https://github.com/your-username/digital-library/issues) for ideas and to report bugs.
 
 ---
 
-## License
-
-This project is licensed under the [MIT License](LICENSE) — see the LICENSE file for details.
-
----
-
-## Contact
+## 🙋 Contact
 
 Created by Avin Dsouza.
-Feel free to reach out for questions or collaborations!
+
+Got questions or ideas? Reach out anytime!
 
 ---
