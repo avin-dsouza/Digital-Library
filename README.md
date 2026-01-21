@@ -85,8 +85,6 @@ To contribute:
 4. Push to your branch (`git push origin feature-name`).
 5. Open a Pull Request describing your changes.
 
-Check the [issues page](https://github.com/your-username/digital-library/issues) for ideas and to report bugs.
-
 ---
 
 ## 🙋 Contact
@@ -95,4 +93,8 @@ Created by Avin Dsouza.
 
 Got questions or ideas? Reach out anytime!
 
+<p align="left">
+  <a href="https://linkedin.com/in/avin-dsouza" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"/></a>
+  <a href="mailto:your.avindsouza7@gmail.com"><img src="https://img.shields.io/badge/-Email-D14836?style=for-the-badge&logo=gmail&logoColor=white"/></a>
+</p>
 ---
